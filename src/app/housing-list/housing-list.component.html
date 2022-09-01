@@ -1,0 +1,59 @@
+<div class="mat-elevation-z8">
+
+  <div class="toolbar-filter">&nbsp;&nbsp;
+    <mat-form-field style="width: 40%">
+      <mat-label>Ville</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Entrez le début d'un nom de la ville">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-slide-toggle [checked]="maisonSelected" (change)="habitationChanged($event, 1)">
+      Maison
+    </mat-slide-toggle>
+    <mat-slide-toggle [checked]="appartementSelected" (change)="habitationChanged($event, 2)">
+      Appartement
+    </mat-slide-toggle>
+  </div>
+
+  <table mat-table [dataSource]="dataSource">
+    <!-- Type Habitat Column -->
+    <ng-container matColumnDef="typeHabitat">
+      <th mat-header-cell *matHeaderCellDef> Habitat </th>
+      <td mat-cell *matCellDef="let element"> {{element.typehabitat.libelle}} </td>
+    </ng-container>
+
+    <!-- Pièces Column -->
+    <ng-container matColumnDef="pieces">
+      <th mat-header-cell *matHeaderCellDef> Pièces </th>
+      <td mat-cell *matCellDef="let element"> {{element.chambres}} chambres,
+        {{element.lits}} lits, {{element.sdb}} sdb </td>
+    </ng-container>
+
+    <!-- Surface Column -->
+    <ng-container matColumnDef="superficie">
+      <th mat-header-cell *matHeaderCellDef> Superficie </th>
+      <td mat-cell *matCellDef="let element"> {{element.superficie}} m²</td>
+    </ng-container>
+
+    <!-- Prix Column -->
+    <ng-container matColumnDef="prix">
+      <th mat-header-cell *matHeaderCellDef> Prix </th>
+      <td mat-cell *matCellDef="let element"> {{element.prixmois | currency: 'EUR':
+        'symbol':'1.2-2' }} </td>
+    </ng-container>
+
+    <!-- Adresse Column -->
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef> Adresse </th>
+      <td mat-cell *matCellDef="let element"> {{element.adresse}}, {{element.ville}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[25, 50]"
+    showFirstLastButtons>
+  </mat-paginator>
+</div>
+

@@ -1,0 +1,57 @@
+<div class="toolbar-container" >
+
+  <mat-toolbar color="primary">
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span>Location d'habitations</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+
+    <div>nom prenom</div>
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+
+      <mat-nav-list>
+        <a mat-list-item
+           routerLink="/dashboard"
+           [routerLinkActive]="['active']"
+        >
+          <mat-icon matListIcon>dashboard</mat-icon>
+          Dashboard
+        </a>
+
+        <h2 matSubheader>Habitation</h2>
+        <a mat-list-item
+           routerLink="/housing/list"
+           [routerLinkActive]="['active']"
+        >
+          <mat-icon matListIcon>storage</mat-icon>
+          Habitations
+        </a>
+        <mat-divider></mat-divider>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

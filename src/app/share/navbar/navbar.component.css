@@ -1,0 +1,74 @@
+.ng-fa-icon {
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.toolbar-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: #F3F1F1;
+  margin-top: 61px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  background-color: #f8fafc;
+}
+.sidenav .mat-subheader {
+  color: #FFFFFF;
+  background-color: #B3C5D8;
+}
+.sidenav .mat-list-item.active{
+  color: #1d3fa3;
+  background-color: #dedede;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.main_content {
+  margin: 15px 15px 15px 15px;
+}
+
+.footer {
+  padding: 32px;
+  background-color: #F3F1F1;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+/*
+.sidenav-container {
+  height: 100%;
+}
+.sidenav {
+  width: 200px;
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+*/
